@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorry Asim - Hafsa Loves You</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffb6c1, #fce4ec, #f8bbd9, #e1bee7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-family: 'Dancing Script', cursive; /* Romantic font */
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 48px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s infinite alternate;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 32px;
+            background: linear-gradient(45deg, #ffb6c1, #dc143c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 10px;
+        }
+
+        /* Big Heart */
+        .big-heart {
+            font-size: 150px;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            margin: 40px 0;
+            transition: transform 0.3s;
+        }
+
+        .big-heart:hover {
+            transform: scale(1.1);
+        }
+
+        /* Touch This Text */
+        .touch-text {
+            font-size: 24px;
+            color: #ff69b4;
+            animation: glow 2s infinite alternate;
+            margin-top: 10px;
+        }
+
+        /* Apology Letter Modal */
+        .letter-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #fff, #ffb6c1);
+            border: 3px solid #ff69b4;
+            border-radius: 15px;
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+            z-index: 10;
+            animation: fadeIn 0.5s;
+        }
+
+        .letter-modal p {
+            font-size: 20px;
+            color: #c9184a;
+            line-height: 1.6;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .close-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Balloons with Gradients */
+        .balloon {
+            width: 70px;
+            height: 90px;
+            background: linear-gradient(45deg, #ff69b4, #ffb6c1);
+            border-radius: 50%;
+            position: absolute;
+            bottom: -100px;
+            animation: float 6s infinite;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+        }
+
+        .balloon:nth-child(1) { left: 15%; animation-delay: 0s; background: linear-gradient(45deg, #ff1493, #dc143c); }
+        .balloon:nth-child(2) { left: 35%; animation-delay: 1s; }
+        .balloon:nth-child(3) { left: 55%; animation-delay: 2s; background: linear-gradient(45deg, #ffb6c1, #ff69b4); }
+        .balloon:nth-child(4) { left: 75%; animation-delay: 3s; }
+
+        /* Pretty Hearts with Gradients */
+        .heart {
+            position: absolute;
+            font-size: 28px;
+            color: #ff69b4;
+            animation: floatHeart 8s infinite linear;
+            opacity: 0.8;
+        }
+
+        .heart:nth-child(1) { left: 5%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 25%; animation-delay: 1s; color: #ff1493; }
+        .heart:nth-child(3) { left: 45%; animation-delay: 2s; }
+        .heart:nth-child(4) { left: 65%; animation-delay: 3s; color: #dc143c; }
+        .heart:nth-child(5) { left: 85%; animation-delay: 4s; }
+
+        /* Sparkles for Romance */
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            color: #fff;
+            animation: twinkle 3s infinite;
+        }
+
+        .sparkle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 30%; right: 15%; animation-delay: 1s; }
+        .sparkle:nth-child(3) { top: 50%; left: 20%; animation-delay: 2s; }
+        .sparkle:nth-child(4) { top: 70%; right: 10%; animation-delay: 3s; }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-900px); opacity: 0; }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 15px #ff69b4; }
+            to { text-shadow: 0 0 30px #ff1493; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SORRY ASIMMMM MERIIII JAANNNNNN</h1>
+        <h2>HAFSA LOVESSSSS YOUUUUU SOOOOOO MUCHHHHHHHHH 💖</h2>
+        <h2>HAFSA KI JAAAANNNNN HAIINNNN APPPP 💖</h2>
+
+        <div class="big-heart" onclick="showLetter()">💗</div>
+        <div class="touch-text">Touch this</div>
+    </div>
+
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+
+    <div class="heart">💖</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💘</div>
+
+    <div class="sparkle">✨</div>
+    <div class="sparkle">✨</div>
+    <div class="sparkle">✨</div>
+    <div class="sparkle">✨</div>
+
+    <div class="letter-modal" id="letterModal">
+        <p>Dear Asim, my love 💕<br>
+        I'm so sorry for whatever I did to hurt you. You mean the world to me, and I can't imagine life without you. Please forgive me, my jaan. I love you more than words can say! 🌹❤️<br>
+        Forever yours, Hafsa 💖😘</p>
+        <button class="close-btn" onclick="closeLetter()">Close</button>
+    </div>
+
+    <script>
+        function showLetter() {
+            document.getElementById('letterModal').style.display = 'block';
+        }
+
+        function closeLetter() {
+            document.getElementById('letterModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
